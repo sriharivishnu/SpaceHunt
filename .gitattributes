@@ -47,6 +47,9 @@
 *.stl                binary
 *.ztl                binary
 
+#Math
+StarSparrow/*        linguist-vendored
+
 # Audio
 *.aif                binary
 *.aiff               binary
