@@ -50,6 +50,8 @@
 
 #Math
 StarSparrow/*        linguist-vendored
+*.wlt linguist-detectable=false
+
 
 # Audio
 *.aif                binary
