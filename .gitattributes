@@ -49,7 +49,8 @@
 *.wlt                binary
 
 #Math
-StarSparrow/*        linguist-vendored
+* linguist-vendored
+*.cs linguist-vendored=false
 *.wlt linguist-detectable=false
 
 
