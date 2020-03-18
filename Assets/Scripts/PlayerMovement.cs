@@ -28,9 +28,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Thrust()
     {
-        if (Input.GetAxis("Thrust") > 0)
+        if (true)
         {
-            transform.position += transform.forward * movementSpeed * Time.deltaTime * Input.GetAxis("Thrust");
+            transform.position += transform.forward * movementSpeed * Time.deltaTime;
         }
 
     }
