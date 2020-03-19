@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Transform))]
 public class FollowCam : MonoBehaviour
 {
     [SerializeField] Transform target;
