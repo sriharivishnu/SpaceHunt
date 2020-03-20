@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class PlayerMovement : MonoBehaviour
 {
     Transform myT;
     [SerializeField] float movementSpeed = 50f;
     [SerializeField] float turnSpeed = 60f;
-    [SerializeField] Thruster[] thruster;
+    public Thruster[] thruster;
 
     bool thrusterEnabled = false;
 
@@ -44,17 +45,21 @@ public class PlayerMovement : MonoBehaviour
         if (true)
         {
             transform.position += transform.forward * movementSpeed * Time.deltaTime;
-            
-        }
-
-        if (!thrusterEnabled)
-        {
             foreach (Thruster t in thruster)
             {
-                t.Activate();
+                t.Intensity(1f);
             }
-            thrusterEnabled = true;
+
         }
+
+        //if (!thrusterEnabled)
+        //{
+        //    foreach (Thruster t in thruster)
+        //    {
+        //        t.Activate();
+        //    }
+        //    thrusterEnabled = true;
+        //}
 
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TrailRenderer))]
-[RequireComponent(typeof(Light))]
+//[RequireComponent(typeof(Light))]
 public class Thruster : MonoBehaviour
 {
     TrailRenderer tr;
@@ -17,21 +17,28 @@ public class Thruster : MonoBehaviour
 
     private void Start()
     {
-        tr.enabled = false;
-        thrusterLight.enabled = false;
+        //tr.enabled = false;
+        //thrusterLight.enabled = false;
+        thrusterLight.intensity = 0;
     }
 
-    public void Activate(bool activate = true)
+    //public void Activate(bool activate = true)
+    //{
+    //    if (activate)
+    //    {
+    //        tr.enabled = true;
+    //        thrusterLight.enabled = true;
+    //    }
+    //    else
+    //    {
+    //        tr.enabled = false;
+    //        thrusterLight.enabled = false;
+    //    }
+    //}
+
+    public void Intensity(float inten)
     {
-        if (activate)
-        {
-            tr.enabled = true;
-            thrusterLight.enabled = true;
-        }
-        else
-        {
-            tr.enabled = false;
-            thrusterLight.enabled = false;
-        }
+        thrusterLight.intensity = inten * 10f;
+       
     }
 }

@@ -13,21 +13,25 @@ public class AsteroidManager : MonoBehaviour
         PlaceAsteroids();
     }
 
+   float getAsteroidZ (int x, int y)
+    {
+        return (Mathf.Pow(x, 2) + Mathf.Pow(y, 2));
+    }
+
     void PlaceAsteroids()
     {
-        for (int x = 0; x < numberOfAsteroids; x++)
+
+        for (int x = -numberOfAsteroids; x < numberOfAsteroids; x++)
         {
-            for (int y = 0; y < numberOfAsteroids; y++)
+            for (int y = -numberOfAsteroids; y < numberOfAsteroids; y++)
             {
-                for (int z = 0; z < numberOfAsteroids; z++ )
-                {
-                    InstantiateAsteroid(x, y, z);
-                }
+                InstantiateAsteroid(x, y, getAsteroidZ(x, y));
+               
             }
         }
     }
 
-    void InstantiateAsteroid(int x, int y, int z)
+    void InstantiateAsteroid(int x, int y, float z)
     {
         Vector3 position = new Vector3(transform.position.x + x * gridSpacing + AsteroidOffset(),
                                         transform.position.y + y * gridSpacing + AsteroidOffset(),

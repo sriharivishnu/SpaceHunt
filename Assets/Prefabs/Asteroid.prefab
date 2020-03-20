@@ -106,6 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07dd7cebfe8d04231a465d86417f28a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minScale: 8.8
-  maxScale: 10.2
+  minScale: 8.65
+  maxScale: 13.21
   rotationOffset: 50
+  explosion: {fileID: 100008, guid: 7e434543af9a9694eb543bfed5b37dcc, type: 3}
+  destroyTime: 6
+  tumble: 0
