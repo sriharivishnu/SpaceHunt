@@ -57,10 +57,16 @@ public class Laser : MonoBehaviour
 
     public void FireLaser()
     {
+        FireLaser(CastRay());
+
+    }
+
+    public void FireLaser(Vector3 targetPosition)
+    {
         if (canFire)
         {
             lr.SetPosition(0, myT.position);
-            lr.SetPosition(1, CastRay());
+            lr.SetPosition(1, targetPosition);
             lr.enabled = true;
             laserLight.enabled = true;
             canFire = false;

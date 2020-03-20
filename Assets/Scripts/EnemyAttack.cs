@@ -7,6 +7,8 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] Laser laser;
 
+    Vector3 hitPosition = Vector3.zero;
+
     private void Update()
     {
         InFront();
@@ -43,6 +45,7 @@ public class EnemyAttack : MonoBehaviour
             if (hit.transform.CompareTag("Player"))
             {
                 Debug.DrawRay(laser.transform.position, direction, Color.red);
+                hitPosition = hit.transform.position;
                 return true;
             }
         }
@@ -51,6 +54,6 @@ public class EnemyAttack : MonoBehaviour
 
     void FireLaser()
     {
-        laser.FireLaser();
+        laser.FireLaser(hitPosition);
     }
 }
