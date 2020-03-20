@@ -42,7 +42,11 @@ public class Laser : MonoBehaviour
         if (Physics.Raycast(transform.position, fwd, out hit))
         {
             Debug.Log("We hit: " + hit.ToString());
-            hit.transform.GetComponent<Asteroid>().BeenHit(hit.point);
+            Explosion temp = hit.transform.GetComponent<Explosion>();
+            if (temp != null)
+            {
+                temp.ExplodeAt(hit.point);
+            }
             return hit.point;
         }
         Debug.Log("We missed...");
