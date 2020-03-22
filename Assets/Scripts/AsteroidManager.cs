@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AsteroidManager : MonoBehaviour
 {
-    [SerializeField] public Asteroid asteroid;
+    [SerializeField] public Asteroid[] asteroids;
     [SerializeField] int numberOfAsteroids = 5;
     [SerializeField] int gridSpacing = 25;
 
@@ -36,7 +36,8 @@ public class AsteroidManager : MonoBehaviour
         Vector3 position = new Vector3(transform.position.x + x * gridSpacing + AsteroidOffset(),
                                         transform.position.y + y * gridSpacing + AsteroidOffset(),
                                         transform.position.z + z * gridSpacing + AsteroidOffset());
-        Instantiate(asteroid, position, Quaternion.identity, transform);
+        Asteroid a = asteroids[Random.Range(0, asteroids.Length)];
+        Instantiate(a, position, Quaternion.identity, transform);
     }
 
     float AsteroidOffset()

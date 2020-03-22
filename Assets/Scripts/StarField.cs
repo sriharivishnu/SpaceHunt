@@ -50,7 +50,8 @@ public class StarField : MonoBehaviour
         for (int i = 0; i < starsMax; i++)
         {
             points[i].position = Random.insideUnitSphere * starDistance + myT.position;
-            points[i].startColor = new Color(1, 1, 1, 1);
+            points[i].startColor = Color.white;
+            
             points[i].startSize = starSize;
         }
     }

@@ -54,6 +54,6 @@ public class EnemyAttack : MonoBehaviour
 
     void FireLaser()
     {
-        laser.FireLaser(hitPosition);
+        laser.FireLaser(hitPosition, target);
     }
 }
