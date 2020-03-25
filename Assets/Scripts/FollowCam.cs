@@ -22,15 +22,15 @@ public class FollowCam : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 toPos = target.position + (target.rotation * defaultDistance);
-        Vector3 curPos = Vector3.Lerp(myT.position, toPos, distanceDamp * Time.deltaTime);
+        Vector3 curPos = Vector3.Lerp(myT.position, toPos, distanceDamp * Time.smoothDeltaTime);
         myT.position = curPos;
 
         Quaternion toRot = Quaternion.LookRotation(target.position - myT.position, target.up);
-        Quaternion curRot = Quaternion.Slerp(myT.rotation, toRot, rotationDamp * Time.deltaTime);
+        Quaternion curRot = Quaternion.Slerp(myT.rotation, toRot, rotationDamp * Time.smoothDeltaTime);
         myT.rotation = curRot;
 
         //Vector3 toPos = target.position + (target.rotation * defaultDistance);
-        //Vector3 curPos = Vector3.SmoothDamp(myT.position, toPos, ref velocity, distanceDamp * Time.deltaTime);
+        //Vector3 curPos = Vector3.SmoothDamp(myT.position, toPos, ref velocity, distanceDamp * Time.smoothDeltaTime);
         //myT.position = curPos;
 
         //myT.LookAt(target, target.up);

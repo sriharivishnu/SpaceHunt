@@ -30,7 +30,7 @@ public class Asteroid : MonoBehaviour
 
     void Update()
     {
-        myT.Rotate(randomRotation * Time.deltaTime);
+        myT.Rotate(randomRotation * Time.smoothDeltaTime);
     }
 
     Vector3 generateRandomVector(float min, float max)

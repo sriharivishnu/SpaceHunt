@@ -10,6 +10,8 @@ public class Explosion : MonoBehaviour
     [SerializeField] Rigidbody rigidBody;
     [SerializeField] float forceStrength = 5f;
 
+    [SerializeField] Shield shield;
+
     //bool exploding = false;
 
 
@@ -17,6 +19,12 @@ public class Explosion : MonoBehaviour
     {
         GameObject go = Instantiate(explosion, pos, Quaternion.identity, transform) as GameObject;
         Destroy(go, destroyTime);
+
+        if (shield == null) {
+            return;
+        }
+        shield.TakeDamage(10);
+
     }
 
     private void OnCollisionEnter(Collision collision)

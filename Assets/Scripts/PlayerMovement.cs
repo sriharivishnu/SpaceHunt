@@ -28,14 +28,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.acceleration.x != 0 || Input.acceleration.y != 0)
         {
-            float roll = -turnSpeed * Time.deltaTime * Input.acceleration.x;
-            float pitch = -turnSpeed * Time.deltaTime * Input.acceleration.z;
+            float roll = -turnSpeed * Time.smoothDeltaTime * Input.acceleration.x;
+            float pitch = -turnSpeed * Time.smoothDeltaTime * Input.acceleration.z;
             myT.Rotate(pitch, 0, roll);
         }
         else
         {
-            float roll = -turnSpeed * Time.deltaTime * Input.GetAxis("Roll");
-            float pitch = turnSpeed * Time.deltaTime * Input.GetAxis("Pitch");
+            float roll = -turnSpeed * Time.smoothDeltaTime * Input.GetAxis("Roll");
+            float pitch = turnSpeed * Time.smoothDeltaTime * Input.GetAxis("Pitch");
             myT.Rotate(pitch, 0, roll);
         }
     }
@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (true)
         {
-            transform.position += transform.forward * movementSpeed * Time.deltaTime;
+            transform.position += transform.forward * movementSpeed * Time.smoothDeltaTime;
             foreach (Thruster t in thruster)
             {
                 t.Intensity(1f);

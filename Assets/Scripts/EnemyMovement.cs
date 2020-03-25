@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] Transform target;
-    [SerializeField] float movementSpeed = 20f;
-    [SerializeField] float rotationalDamp = .5f;
+    [SerializeField] float movementSpeed = 30f;
+    [SerializeField] float rotationalDamp = .8f;
 
-    [SerializeField] float detectionDistance = 20f;
-    [SerializeField] float rayCastOffset = 2.5f;
+    [SerializeField] float detectionDistance = 30f;
+    [SerializeField] float rayCastOffset = 6.5f;
 
 
     Transform myT;
@@ -22,21 +22,28 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         //Turn();
-        Move();
+        if (!FindTarget())
+            return;
         PathFinding();
+        Move();
     }
 
     void Turn()
-    {
+    {   
         Vector3 pos = target.position - myT.position;
+        Vector3 to = new Vector3(target.position.x, target.position.y, myT.position.z);
+        Debug.DrawLine(myT.position, to, Color.blue);
         Quaternion rotation = Quaternion.LookRotation(pos);
 
-        myT.rotation = Quaternion.Slerp(myT.rotation, rotation, Time.deltaTime * rotationalDamp);
+        myT.rotation = Quaternion.Slerp(myT.rotation, rotation, Time.smoothDeltaTime * rotationalDamp);
+        //myT.Rotate(0, 0, -Mathf.Atan(pos.y / pos.x)*Time.smoothDeltaTime*100f);
+        //myT.rotation = Quaternion.FromToRotation(Vector3.up, pos);
+        
     }
 
     void Move()
     {
-        myT.position += myT.forward * movementSpeed * Time.deltaTime;
+        myT.position += myT.forward * movementSpeed * Time.smoothDeltaTime;
     }
 
     void PathFinding()
@@ -49,11 +56,11 @@ public class EnemyMovement : MonoBehaviour
         Vector3 up = transform.position + transform.up * rayCastOffset;
         Vector3 down = transform.position - transform.up * rayCastOffset;
 
-        Debug.DrawRay(left, transform.forward * detectionDistance, Color.cyan);
-        Debug.DrawRay(right, transform.forward * detectionDistance, Color.cyan);
+        //Debug.DrawRay(left, transform.forward * detectionDistance, Color.cyan);
+        //Debug.DrawRay(right, transform.forward * detectionDistance, Color.cyan);
 
-        Debug.DrawRay(up, transform.forward * detectionDistance, Color.cyan);
-        Debug.DrawRay(down, transform.forward * detectionDistance, Color.cyan);
+        //Debug.DrawRay(up, transform.forward * detectionDistance, Color.cyan);
+        //Debug.DrawRay(down, transform.forward * detectionDistance, Color.cyan);
 
         if (Physics.Raycast(left, transform.forward, out hit, detectionDistance))
             newPos += Vector3.right;
@@ -69,7 +76,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (newPos != Vector3.zero)
         {
-            transform.Rotate(newPos * 5f * Time.deltaTime);
+            transform.Rotate(newPos * 5f * Time.smoothDeltaTime);
         }
         else
         {
@@ -77,5 +84,19 @@ public class EnemyMovement : MonoBehaviour
         }
 
 
+    }
+
+    bool FindTarget()
+    {
+        if (target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+
+            if (target == null)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

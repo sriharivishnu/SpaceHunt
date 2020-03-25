@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 5117337746503573240}
   - component: {fileID: 5129427903523510864}
   - component: {fileID: 3454177756473085314}
+  - component: {fileID: 34446401450466336}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -219,6 +220,22 @@ MonoBehaviour:
   target: {fileID: 0}
   movementSpeed: 20
   rotationalDamp: 0.5
+  detectionDistance: 20
+  rayCastOffset: 2.5
+--- !u!114 &34446401450466336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150513525114280050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca224927e3d1140928c089f443a35ebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  laser: {fileID: 525939053991596759}
 --- !u!1 &5151930018161671136
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,3 +430,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3047461075997821623}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &525939053991596759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3244354779861915744, guid: 07cd1f6a419a3453e9565b5f80de809a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3047461075997821623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9329c4519c9594b61b2260d2330c8e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
